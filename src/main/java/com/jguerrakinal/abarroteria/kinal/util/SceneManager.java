@@ -12,10 +12,15 @@ import main.java.com.jguerrakinal.abarroteria.kinal.controller.LoginController;
 import main.java.com.jguerrakinal.abarroteria.kinal.repository.AuthRepository;
 import main.java.com.jguerrakinal.abarroteria.kinal.repository.usuario.UsuarioRepository;
 import main.java.com.jguerrakinal.abarroteria.kinal.service.AuthService;
+import main.java.com.jguerrakinal.abarroteria.kinal.service.dashboard.DashboardService;
 import main.java.com.jguerrakinal.abarroteria.kinal.service.usuario.UsuarioService;
 
 public class SceneManager {
     
+    final String FXML_PATH = "/main/resources/view/";
+    private final int DASHBOARD_WIDTH = 1024;
+    private final int DASHBOARD_HEIGHT = 768;
+
     private final Stage stage;
 
     public SceneManager(Stage stage) {
@@ -53,28 +58,27 @@ public class SceneManager {
     
     public void showDashboardView()throws Exception{
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/view/dashboard-view"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH+"/main/resources/view/dashboard-view"));
+                
         loader.setControllerFactory(
         clazz -> {
-        if(clazz == DashboardController.class){
-            UsuarioRepository usuarioRepository = new UsuarioRepository();
-            UsuarioService usuarioService = new UsuarioService(usuarioRepository);
-            return new DashboardController(usuarioService, this);
-        }
-        
-        try{
-            return clazz.getDeclaredConstructor().newInstance();
-        }catch(Exception e){
-            throw new RuntimeException("Error al crear el constructor" + e.getMessage());
-        }
-        });
+if (clazz == LoginController.class) {
+                    AuthRepository authRepository = new AuthRepository();
+                    DashboardService dashboardService = new DashboardService();
+                    return new LoginController(dashboardService, this);
+                }
+                try {
+                    return clazz.getDeclaredConstructor().newInstance();
+                } catch (Exception e) {
+                    throw new RuntimeException("Error al crear el constructor " + e.getMessage());
+                }
+            });
         
         Parent root = loader.load();
         Scene scene = new Scene(root, 600, 600);
         stage.setScene(scene);
-        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.centerOnScreen();
         stage.show();
-        
     }
     
     
