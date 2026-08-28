@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.jguerrakinal.abarroteria.kinal.controller.LoginController">
+<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.jguerrakinal.abarroteria.kinal.controller.LoginController">
    <children>
       <GridPane layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -33,13 +33,13 @@
                   <PasswordField fx:id="txtFieldPassword" layoutX="79.0" layoutY="285.0" prefHeight="25.0" prefWidth="317.0" />
                   <Button alignment="CENTER" layoutX="85.0" layoutY="341.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="42.0" prefWidth="115.0" stylesheets="@../css/button-style.css" text="Iniciar Sesión">
                      <styleClass>
-                        <String fx:value="btn-primary" />
+                        <String fx:value="btn-third" />
                         <String fx:value="btn-word" />
                      </styleClass>
                   </Button>
                   <Button alignment="CENTER" layoutX="272.0" layoutY="341.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" stylesheets="@../css/button-style.css" text="Registrarse">
                      <styleClass>
-                        <String fx:value="btn-secundary" />
+                        <String fx:value="btn-third" />
                         <String fx:value="btn-word" />
                      </styleClass>
                   </Button>
