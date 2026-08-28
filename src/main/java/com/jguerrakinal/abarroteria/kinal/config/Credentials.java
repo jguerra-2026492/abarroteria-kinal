@@ -2,9 +2,9 @@ package main.java.com.jguerrakinal.abarroteria.kinal.config;
 
 public class Credentials {
     
-    public static final String URL_DATA_BASE = System.getenv("URL_MYSQL_DB") + "/abarroteria_kinal_in4bv";
-    public static final String USER_DB = System.getenv("USER_MYSQL_DB");
-    public static final String PASS_DB = System.getenv("PASS_MYSQL_DB");
+    public static final String URL_DATA_BASE = "jdbc:mysql://localhost:3306/abarroteria_kinal_in4bv";
+    public static final String USER_DB = "IN4BV";
+    public static final String PASS_DB = "%IndiVA4";
     
     private Credentials(){
     

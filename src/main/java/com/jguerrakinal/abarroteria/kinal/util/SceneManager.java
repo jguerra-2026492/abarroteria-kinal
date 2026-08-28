@@ -58,7 +58,7 @@ public class SceneManager {
     
     public void showDashboardView()throws Exception{
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH+"/main/resources/view/dashboard-view"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/view/dashboard-view.fxml"));
                 
         loader.setControllerFactory(
         clazz -> {
@@ -79,6 +79,8 @@ if (clazz == LoginController.class) {
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
+        stage.toFront();
+        stage.requestFocus();
     }
     
     

@@ -51,7 +51,7 @@ public class LoginController implements Initializable {
             }else{
                System.out.println(response);
             sceneManager.showAlertInfo("Bienvenido" + response.getNombre(), "Es bueno verte", "Inicio de sesión correcto", Alert.AlertType.CONFIRMATION);
-            
+            sceneManager.showDashboardView();
             
             }
              

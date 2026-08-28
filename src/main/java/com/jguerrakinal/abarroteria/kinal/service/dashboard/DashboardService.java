@@ -24,4 +24,12 @@ public class DashboardService {
          throw new RuntimeException("Sin productos.");
      }   
     }
+    
+    public boolean deleteProducto(String idProducto) {
+    if (idProducto == null || idProducto.isBlank()) {
+        throw new RuntimeException("Debe seleccionar un producto.");
+    }
+
+    return productoRepository.deleteProducto(idProducto);
+}
 }
