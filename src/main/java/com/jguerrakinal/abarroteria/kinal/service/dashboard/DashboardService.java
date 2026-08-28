@@ -20,9 +20,11 @@ public class DashboardService {
     }
     
     public ObservableList<Producto> findProducto(){
-     if(productoRepository.findAll() == null){
+     ObservableList<Producto> lista = productoRepository.findAll();
+     if(lista == null){
          throw new RuntimeException("Sin productos.");
-     }   
+     }
+     return lista;
     }
     
     public boolean deleteProducto(String idProducto) {

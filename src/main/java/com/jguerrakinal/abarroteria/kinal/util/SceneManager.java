@@ -10,6 +10,7 @@ import javafx.stage.StageStyle;
 import main.java.com.jguerrakinal.abarroteria.kinal.controller.DashboardController;
 import main.java.com.jguerrakinal.abarroteria.kinal.controller.LoginController;
 import main.java.com.jguerrakinal.abarroteria.kinal.repository.AuthRepository;
+import main.java.com.jguerrakinal.abarroteria.kinal.repository.ProductoRepository;
 import main.java.com.jguerrakinal.abarroteria.kinal.repository.usuario.UsuarioRepository;
 import main.java.com.jguerrakinal.abarroteria.kinal.service.AuthService;
 import main.java.com.jguerrakinal.abarroteria.kinal.service.dashboard.DashboardService;
@@ -62,10 +63,10 @@ public class SceneManager {
                 
         loader.setControllerFactory(
         clazz -> {
-if (clazz == LoginController.class) {
-                    AuthRepository authRepository = new AuthRepository();
-                    DashboardService dashboardService = new DashboardService();
-                    return new LoginController(dashboardService, this);
+if (clazz == DashboardController.class) {
+                    ProductoRepository productoRepository = new ProductoRepository();
+                    DashboardService dashboardService = new DashboardService(productoRepository);
+                    return new DashboardController(dashboardService, this);
                 }
                 try {
                     return clazz.getDeclaredConstructor().newInstance();

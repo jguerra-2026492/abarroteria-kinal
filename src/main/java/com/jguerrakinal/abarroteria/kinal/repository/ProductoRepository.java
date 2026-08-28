@@ -4,7 +4,6 @@
  */
 package main.java.com.jguerrakinal.abarroteria.kinal.repository;
 
-import com.mysql.cj.protocol.Resultset;
 import javafx.collections.ObservableList;
 import main.java.com.jguerrakinal.abarroteria.kinal.config.DataBaseConnection;
 import main.java.com.jguerrakinal.abarroteria.kinal.model.Producto;
@@ -20,18 +19,22 @@ public class ProductoRepository {
     
     public ObservableList<Producto> findAll(){
         String sql = "select * from productos";
-        try(PreparedStatement pstm = DataBaseConnection.getDataBaseConnection());
-        Resultset rs = pstm.executeQuery();
         ObservableList<Producto> lista = FXCollections.observableArrayList();
-        if(rs.next()) {
-            lista.add(new Producto(
-            rs.getString("id_producto");
-            rs.getString("nombre_producto");
-            rs.getString("stock");
-            rs.getString("precio"););
+        try(PreparedStatement pstm = DataBaseConnection.getDataBaseConnection().prepareStatement(sql)) {
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()) {
+                lista.add(new Producto(
+                    rs.getString("id_producto"),
+                    rs.getString("nombre_producto"),
+                    rs.getInt("stock"),
+                    rs.getDouble("precio")
+                ));
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
         }
-        
-        }
+        return lista;
+    }
     
 public boolean deleteProducto(String idProducto) {
     String sql = "DELETE FROM productos WHERE id_producto = ?";
